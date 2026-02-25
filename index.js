@@ -9,7 +9,7 @@ const HEADERS = {
     'Authorization': '84b9990927d7886fe790a1e61207c951'
 };
 
-const LIMITE_ENVIO = 1;
+const LIMITE_ENVIO = 15;
 const CLIENTES_FILE = "./clientes.json";
 const ENVIADOS_FILE = "./enviados.json";
 
