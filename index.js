@@ -6,10 +6,10 @@ const API_URL =
 
 const HEADERS = {
   "Content-Type": "application/json",
-  //   'Authorization': 'Bearer SEU_TOKEN_AQUI'
+    'Authorization': '84b9990927d7886fe790a1e61207c951'
 };
 
-const LIMITE_ENVIO = 15;
+const LIMITE_ENVIO = 1;
 const CLIENTES_FILE = "./clientes.json";
 const ENVIADOS_FILE = "./enviados.json";
 
@@ -33,18 +33,19 @@ async function enviarMensagem(numero, mensagem) {
     const response = await axios.post(
       API_URL,
       {
-        number: numero,
+        number: String(numero),
         message: mensagem,
       },
       { headers: HEADERS },
     );
 
     console.log(`✅ Enviado para ${numero}`);
+    console.log("Resposta:", response.data);
     return true;
   } catch (error) {
     console.error(
       `❌ Erro ao enviar para ${numero}`,
-      error.response?.data || error.message,
+      error,
     );
     return false;
   }
@@ -70,9 +71,13 @@ async function executar() {
   const enviadosComSucesso = [];
 
   for (const cliente of lote) {
-    const mensagem = `Olá ${cliente.nome}, Mensagem Teste William`;
+    const mensagem = `🚗🔧 Olá! ${cliente.nome}. Passando para te lembrar que manter a revisão do seu carro em dia evita dor de cabeça e gastos maiores.
 
-    const sucesso = true;
+Fique atento principalmente à troca de óleo (geralmente a cada 5 a 10 mil km) e à correia dentada (normalmente entre 40 e 60 mil km), que são itens essenciais para o bom funcionamento do motor.
+
+Se já está perto da revisão, chama a gente aqui e agendamos rapidinho. Será um prazer cuidar do seu carro! 👍`;
+
+    const sucesso = await enviarMensagem(cliente.telefone, mensagem);
 
     if (sucesso) {
       enviadosComSucesso.push(cliente);
@@ -95,4 +100,4 @@ async function executar() {
   console.log(`📦 Restantes: ${restantes.length}`);
 }
 
-executar();
+executar()
