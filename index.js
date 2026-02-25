@@ -71,9 +71,13 @@ async function executar() {
   const enviadosComSucesso = [];
 
   for (const cliente of lote) {
-    const mensagem = `🚗🔧 Olá! ${cliente.nome}. Passando para te lembrar que manter a revisão do seu carro em dia evita dor de cabeça e gastos maiores.
+    const mensagem = `🚗🔧 Olá! ${cliente.nome}. 
 
-Fique atento principalmente à troca de óleo (geralmente a cada 5 a 10 mil km) e à correia dentada (normalmente entre 40 e 60 mil km), que são itens essenciais para o bom funcionamento do motor.
+Passando para te lembrar que manter a revisão do seu carro em dia evita dor de cabeça e gastos maiores.
+
+Fique atento principalmente à troca de óleo (geralmente a cada 5 a 10 mil km) e à correia dentada (normalmente entre 40 e 60 mil km), que são itens essenciais para o bom funcionamento do seu veículo.
+
+Se você já fez essas revisões recentemente, pode desconsiderar essa mensagem 😉.
 
 Se já está perto da revisão, chama a gente aqui e agendamos rapidinho. Será um prazer cuidar do seu carro! 👍`;
 
